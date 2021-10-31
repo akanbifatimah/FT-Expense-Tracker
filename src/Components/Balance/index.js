@@ -1,0 +1,14 @@
+import { GlobalContext } from "../../ContestApi/GlobalState";
+import { useContext } from "react";
+const Balance = () => {
+    const {Transactions}= useContext(GlobalContext)
+    const amounts = Transactions.map(transaction => transaction.amount);
+
+    const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+    return ( <div>
+            <h4>Your Balance</h4>
+            <h1 id='balance'>${total}</h1>
+        </div> );
+}
+ 
+export default Balance;
